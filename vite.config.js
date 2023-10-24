@@ -1,15 +1,17 @@
-import {defineConfig} from 'vite'
+import vue from '@vitejs/plugin-vue'
+import { defineConfig } from 'vite'
+import { resolve } from 'path'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
-import {ElementPlusResolver} from 'unplugin-vue-components/resolvers'
-
-import vue from '@vitejs/plugin-vue'
-
-import { resolve } from 'path'
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
+import IconsResolver from 'unplugin-icons/resolver'
+import Icons from 'unplugin-icons/vite'
+import viteCompression from 'vite-plugin-compression'
 
 const pathResolve = (dir) => {
-  return resolve(__dirname, ".", dir)
+    return resolve(__dirname, ".", dir)
 }
+
 export default defineConfig({
     publicDir: "public",
     base: './',
@@ -21,7 +23,7 @@ export default defineConfig({
     clearScreen: true,
     resolve: {
         // https://vitejs.dev/config/#resolve-alias
-        alias:{
+        alias: {
             '@': pathResolve("src")
         },
         extensions: ['', '.js', '.json', '.vue', '.scss', '.css']
@@ -90,10 +92,32 @@ export default defineConfig({
     plugins: [
         vue(),
         AutoImport({
-            resolvers: [ElementPlusResolver()],
+            imports: ['vue'],
+            resolvers: [
+                ElementPlusResolver(), // Auto import icon components
+                // 自动导入图标组件
+                IconsResolver({
+                    prefix: 'Icon'
+                })
+            ],
+            dts: pathResolve('src/auto-imports.d.ts')
         }),
         Components({
-            resolvers: [ElementPlusResolver()],
+            resolvers: [
+                IconsResolver({
+                    enabledCollections: ['ep']
+                }),
+                ElementPlusResolver()
+            ],
+            dts: pathResolve('src/components.d.ts')
         }),
+        Icons({
+            compiler: 'vue3',
+            autoInstall: true
+        }),
+        // terser()
+        viteCompression({
+            threshold: 1000 * 100 // 对大于 100kb 的文件进行压缩
+        })
     ],
 })

@@ -4,7 +4,7 @@
 
 - 💪 Vue 3、Vue-Router 4、Vite、esbuild
 - ☀️ Pinia 状态管理
-- 💥 ElementUI组件自动导入
+- 💥 ElementUI组件、Icon按需导入
 
 ## 运行命令
 
