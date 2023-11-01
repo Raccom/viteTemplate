@@ -31,7 +31,7 @@ router.beforeEach((to, from, next) => {
     setTimeout(() => {
         loadingInstance.close();
         next();
-    }, 500)
+    }, 800)
 })
 
 // 导出路由
