@@ -1,5 +1,5 @@
 <template>
-    <ElConfigProvider :locale="zhCn" namespace="ep">
+    <ElConfigProvider :locale="zhCn">
         <RouterView/>
     </ElConfigProvider>
 </template>

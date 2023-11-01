@@ -13,7 +13,7 @@ const content = computed({
 
 <template>
     <h1>hello</h1>
-    <el-button type="primary" @click="content='new Value!'"></el-button>
+    <el-button type="primary" @click="content='new Value!'">change Value</el-button>
 </template>
 
 <style scoped lang="scss"></style>

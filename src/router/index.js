@@ -1,4 +1,5 @@
 import {createRouter, createWebHistory} from 'vue-router';
+import 'element-plus/es/components/loading/style/css';
 import {ElLoading} from 'element-plus';
 import Home from '@/pages/home';
 
@@ -31,7 +32,7 @@ router.beforeEach((to, from, next) => {
     setTimeout(() => {
         loadingInstance.close();
         next();
-    }, 800);
+    }, 1000);
 });
 
 // 导出路由

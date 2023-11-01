@@ -26,13 +26,6 @@ export default defineConfig({
         },
         extensions: ['', '.js', '.json', '.vue', '.scss', '.css']
     },
-    css: {
-        preprocessorOptions: {
-            scss: {
-                additionalData: `@use "@/assets/css/theme/index.scss" as *;`,
-            },
-        },
-    },
     esbuild: {
         jsxFactory: "h",
         jsxFragment: "Fragment",
@@ -112,9 +105,7 @@ export default defineConfig({
                 IconsResolver({
                     enabledCollections: ['ep']
                 }),
-                ElementPlusResolver({
-                    importStyle: 'sass',
-                })
+                ElementPlusResolver()
             ],
             dts: pathResolve('src/components.d.ts')
         }),
