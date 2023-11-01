@@ -1,5 +1,7 @@
 # Vue 3 + Vite
 
+Raccom vue3 项目模板，自动化、快速、开箱即用。
+
 ## 项目架构
 
 - 💪 Vue 3、Vue-Router 4、Vite、esbuild
@@ -18,4 +20,10 @@ yarn
 
 ```sh
 yarn dev
+```
+
+### 项目打包
+
+```sh
+yarn build
 ```

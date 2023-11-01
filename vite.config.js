@@ -1,16 +1,14 @@
-import vue from '@vitejs/plugin-vue'
-import { defineConfig } from 'vite'
-import { resolve } from 'path'
-import AutoImport from 'unplugin-auto-import/vite'
-import Components from 'unplugin-vue-components/vite'
-import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
-import IconsResolver from 'unplugin-icons/resolver'
-import Icons from 'unplugin-icons/vite'
-import viteCompression from 'vite-plugin-compression'
+import vue from '@vitejs/plugin-vue';
+import { defineConfig } from 'vite';
+import { resolve } from 'path';
+import AutoImport from 'unplugin-auto-import/vite';
+import Components from 'unplugin-vue-components/vite';
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
+import IconsResolver from 'unplugin-icons/resolver';
+import Icons from 'unplugin-icons/vite';
+import viteCompression from 'vite-plugin-compression';
 
-const pathResolve = (dir) => {
-    return resolve(__dirname, ".", dir)
-}
+const pathResolve = (dir) => resolve(__dirname, ".", dir);
 
 export default defineConfig({
     publicDir: "public",

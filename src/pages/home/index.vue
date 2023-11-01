@@ -1,4 +1,5 @@
 <template>
+    <HelloWorld></HelloWorld>
     <div>
         home
         {{ username }}
@@ -12,6 +13,7 @@
 <script setup>
 import { storeToRefs } from 'pinia';
 import { useStore } from '@/store';
+import HelloWorld from '../../components/helloWorld.vue';
 
 const store = useStore();
 const { username } = storeToRefs(store);

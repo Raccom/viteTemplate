@@ -1,5 +1,6 @@
-import {createRouter, createWebHistory} from 'vue-router'
-import Home from '@/pages/Home/Home'
+import {createRouter, createWebHistory} from 'vue-router';
+import {ElLoading} from 'element-plus';
+import Home from '@/pages/home';
 
 const routes = [
     {
@@ -21,6 +22,16 @@ const routes = [
 const router = createRouter({
     history: createWebHistory(),
     routes
+})
+
+router.beforeEach((to, from, next) => {
+    const loadingInstance = ElLoading.service({text: '加载中...'});
+
+    // login code
+    setTimeout(() => {
+        loadingInstance.close();
+        next();
+    }, 500)
 })
 
 // 导出路由
