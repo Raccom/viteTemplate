@@ -7,40 +7,11 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
-    BottomItem: typeof import('./components/BottomItem.vue')['default']
-    ControlBtns: typeof import('./components/ControlBtns.vue')['default']
-    ControlComponent: typeof import('./components/ControlComponent.vue')['default']
     ElButton: typeof import('element-plus/es')['ElButton']
     ElConfigProvider: typeof import('element-plus/es')['ElConfigProvider']
-    ElDialog: typeof import('element-plus/es')['ElDialog']
-    ElDivider: typeof import('element-plus/es')['ElDivider']
-    ElForm: typeof import('element-plus/es')['ElForm']
-    ElFormItem: typeof import('element-plus/es')['ElFormItem']
     ElIcon: typeof import('element-plus/es')['ElIcon']
-    ElImage: typeof import('element-plus/es')['ElImage']
-    ElInput: typeof import('element-plus/es')['ElInput']
-    ElPopover: typeof import('element-plus/es')['ElPopover']
-    ElSlider: typeof import('element-plus/es')['ElSlider']
-    ElTag: typeof import('element-plus/es')['ElTag']
-    ElText: typeof import('element-plus/es')['ElText']
-    IEpClose: typeof import('~icons/ep/close')['default']
-    IEpFullScreen: typeof import('~icons/ep/full-screen')['default']
-    IEpVideoPause: typeof import('~icons/ep/video-pause')['default']
-    IEpVideoPlay: typeof import('~icons/ep/video-play')['default']
-    PostDialog: typeof import('./components/PostDialog.vue')['default']
+    HelloWorld: typeof import('./components/HelloWorld.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
-    TimeTrack: typeof import('./components/bottom-tracks/TimeTrack.vue')['default']
-    VideoAddFrame: typeof import('./components/VideoAddFrame.vue')['default']
-    VideoAddImage: typeof import('./components/VideoAddImage.vue')['default']
-    VideoAddSubtitle: typeof import('./components/VideoAddSubtitle.vue')['default']
-    VideoAddText: typeof import('./components/VideoAddText.vue')['default']
-    VideoComponent: typeof import('./components/VideoComponent.vue')['default']
-    VideoListComponent: typeof import('./components/VideoListComponent.vue')['default']
-    VideoLower: typeof import('./components/VideoLower.vue')['default']
-    VideoSlice: typeof import('./components/VideoSlice.vue')['default']
-  }
-  export interface ComponentCustomProperties {
-    vLoading: typeof import('element-plus/es')['ElLoadingDirective']
   }
 }
