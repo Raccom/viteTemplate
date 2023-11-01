@@ -16,13 +16,13 @@ const routes = [
         name: '404',
         component: Home
     }
-]
+];
 
 // 创建路由
 const router = createRouter({
     history: createWebHistory(),
     routes
-})
+});
 
 router.beforeEach((to, from, next) => {
     const loadingInstance = ElLoading.service({text: '加载中...'});
@@ -31,8 +31,8 @@ router.beforeEach((to, from, next) => {
     setTimeout(() => {
         loadingInstance.close();
         next();
-    }, 800)
-})
+    }, 800);
+});
 
 // 导出路由
-export default router
+export default router;

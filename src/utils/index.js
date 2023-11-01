@@ -1,43 +1,29 @@
 /**
- * @description 生成 16 进制指定长度的字符串
- */
-function getRandom(len) {
-    return Math.floor((1 + Math.random()) * (16 ** len))
-        .toString(16)
-        .substring(1);
-}
-
-/**
- * @description 生成随机id
- * @param prefix {string} id前缀
- * @return {string} 生成的id
- */
-export function getId(prefix = 't') {
-    return `${prefix ? `${prefix}-` : ''}${getRandom(5)}${getRandom(3)}-${getRandom(4)}`;
-}
-
-/**
  * @description 封装json格式化, 避免error
- * @param jsonStr {string} 格式化的json字符串
+ * @param {string} jsonStr 格式化的json字符串
  * @return {any} 格式化完成的数据
  */
-export function getJsonParse(jsonStr) {
+export const getJsonParse = (jsonStr) => {
     let res = '';
     try {
         res = JSON.parse(jsonStr);
     } catch (e) {
-        console.log(e);
-        res = '';
+        if (typeof jsonStr === "string") {
+            res = jsonStr;
+        } else {
+            res = '';
+            console.log(e);
+        }
     }
     return res;
 }
 
 /**
  * @description 下载文件
- * @param href {string} 下载地址
- * @param fileName {string} 下载文件名称
+ * @param {string} href 下载地址
+ * @param {string} fileName 下载文件名称
  */
-export function downloadFileUrl(href, fileName = +new Date()) {
+export const downloadFileUrl = (href, fileName = +new Date()) => {
     const downloadElement = document.createElement('a');
     downloadElement.href = href;
     // 下载后文件名
@@ -49,3 +35,43 @@ export function downloadFileUrl(href, fileName = +new Date()) {
     window.URL.revokeObjectURL(href);
     downloadElement.href = '';
 }
+
+/**
+ * @classdesc 对localStorage的封装 新增expired过期时间 获取过期的entries将返回空并清空对应的值
+ */
+class useStorage {
+    /**
+     * 额外设置一条 `key__expires__: 时间戳` 的storage来判断过期时间
+     * @param {string} key
+     * @param {any} value
+     * @param {number} expired 过期时间 以分钟为单位
+     * @returns {any}
+     */
+
+    setItem(key, value, expired) {
+        localStorage[key] = JSON.stringify(value);
+        if (expired) {
+            localStorage[`${key}__expires__`] = Date.now() + 1000 * 60 * expired;
+        }
+        return value;
+    }
+
+    /**
+     * 获取storage时先获取`key__expires__`的值判断时间是否过期 过期则清空该两条storage 返回空
+     * @param {string} key
+     * @returns {any}
+     */
+    getItem(key) {
+        let expired = localStorage[`${key}__expires__`] || Date.now + 1;
+        const now = Date.now();
+
+        if (now >= expired) {
+            localStorage.removeItem(key);
+            localStorage.removeItem(`${key}__expires__`);
+            return;
+        }
+        return localStorage[key] ? JSON.parse(localStorage[key]) : localStorage[key];
+    }
+}
+
+export const storage = new useStorage();

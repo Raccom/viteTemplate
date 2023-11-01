@@ -11,7 +11,13 @@ html, body, #app {
 }
 
 body, button, input, select, textarea {
-    font-size: 12px
+    font-size: 12px;
+    outline: none;
+}
+
+button {
+    cursor: pointer;
+    user-select: none;
 }
 
 h1, h2, h3, h4, h5, h6 {

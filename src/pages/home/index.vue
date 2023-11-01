@@ -1,5 +1,5 @@
 <template>
-    <HelloWorld></HelloWorld>
+    <HelloWorld v-model="num"></HelloWorld>
     <div>
         home
         {{ username }}
@@ -13,7 +13,7 @@
 <script setup>
 import { storeToRefs } from 'pinia';
 import { useStore } from '@/store';
-import HelloWorld from '../../components/helloWorld.vue';
+import HelloWorld from '@/components/HelloWorld.vue';
 
 const store = useStore();
 const { username } = storeToRefs(store);
@@ -21,5 +21,4 @@ const { username } = storeToRefs(store);
 const num = ref(0);
 </script>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>
