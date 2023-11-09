@@ -3,9 +3,12 @@ import { defineConfig } from 'vite';
 import { resolve } from 'path';
 import AutoImport from 'unplugin-auto-import/vite';
 import Components from 'unplugin-vue-components/vite';
-import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
-import IconsResolver from 'unplugin-icons/resolver';
+import UnoCSS from 'unocss/vite';
+import presetUno from '@unocss/preset-uno';
+import presetAttributify from '@unocss/preset-attributify';
+import { NaiveUiResolver } from 'unplugin-vue-components/resolvers';
 import Icons from 'unplugin-icons/vite';
+import IconsResolver from 'unplugin-icons/resolver';
 import viteCompression from 'vite-plugin-compression';
 
 const pathResolve = (dir) => resolve(__dirname, ".", dir);
@@ -25,13 +28,6 @@ export default defineConfig({
             '@': pathResolve("src")
         },
         extensions: ['', '.js', '.json', '.vue', '.scss', '.css']
-    },
-    css: {
-        preprocessorOptions: {
-            scss: {
-                additionalData: `@use "@/assets/css/theme/index.scss" as *;`,
-            },
-        },
     },
     esbuild: {
         jsxFactory: "h",
@@ -54,7 +50,7 @@ export default defineConfig({
         // 反向代理配置
         proxy: {
             '/api': {
-                target: "http://localhost:8080",
+                target: "http://localhost:3000",
                 changeOrigin: true,
                 rewrite: (path) => path.replace(/^\/api/, '')
             }
@@ -96,32 +92,29 @@ export default defineConfig({
     },
     plugins: [
         vue(),
+        UnoCSS({
+            presets: [presetUno(), presetAttributify()]
+        }),
         AutoImport({
-            imports: ['vue'],
-            resolvers: [
-                ElementPlusResolver(), // Auto import icon components
-                // 自动导入图标组件
-                IconsResolver({
-                    prefix: 'Icon'
-                })
+            imports: [
+                'vue',
+                {
+                    'naive-ui': [
+                        'useDialog',
+                        'useMessage',
+                        'useNotification',
+                        'useLoadingBar'
+                    ]
+                }
             ],
+            resolvers: [],
             dts: pathResolve('src/auto-imports.d.ts')
         }),
         Components({
-            resolvers: [
-                IconsResolver({
-                    enabledCollections: ['ep']
-                }),
-                ElementPlusResolver({
-                    importStyle: 'sass',
-                })
-            ],
+            resolvers: [NaiveUiResolver(), IconsResolver({ componentPrefix: 'icon' })],
             dts: pathResolve('src/components.d.ts')
         }),
-        Icons({
-            compiler: 'vue3',
-            autoInstall: true
-        }),
+        Icons({ compiler: 'vue3', scale: 1, defaultClass: 'icon', autoInstall: true }),
         // terser()
         viteCompression({
             threshold: 1000 * 100 // 对大于 100kb 的文件进行压缩
