@@ -1,6 +1,6 @@
-# Raccom Template
+# Joseph Liang Template
 
-Raccom vue3 项目模板，自动化、快速、开箱即用。
+vue3 项目模板，自动化、快速、开箱即用。
 
 ## 项目架构
 
