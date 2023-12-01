@@ -3,6 +3,7 @@ import { defineConfig } from 'vite';
 import { resolve } from 'path';
 import AutoImport from 'unplugin-auto-import/vite';
 import Components from 'unplugin-vue-components/vite';
+import { VantResolver } from '@vant/auto-import-resolver';
 import UnoCSS from 'unocss/vite';
 import presetUno from '@unocss/preset-uno';
 import presetAttributify from '@unocss/preset-attributify';
@@ -26,7 +27,7 @@ export default defineConfig({
         alias: {
             '@': pathResolve("src")
         },
-        extensions: ['', '.js', '.json', '.vue', '.scss', '.css']
+        extensions: ['', '.js', '.json', '.vue', '.scss', '.css',  '.mjs']
     },
     esbuild: {
         jsxFactory: "h",
@@ -49,7 +50,7 @@ export default defineConfig({
         // 反向代理配置
         proxy: {
             '/api': {
-                target: "http://localhost:3000",
+                target: "http://172.16.20.111:24235",
                 changeOrigin: true,
                 rewrite: (path) => path.replace(/^\/api/, '')
             }
@@ -100,7 +101,7 @@ export default defineConfig({
             dts: pathResolve('src/auto-imports.d.ts')
         }),
         Components({
-            resolvers: [IconsResolver({ componentPrefix: 'icon' })],
+            resolvers: [VantResolver(), IconsResolver({ componentPrefix: 'icon' })],
             dts: pathResolve('src/components.d.ts')
         }),
         Icons({ compiler: 'vue3', scale: 1, defaultClass: 'icon', autoInstall: true }),

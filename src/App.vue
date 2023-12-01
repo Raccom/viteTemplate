@@ -1,7 +1,9 @@
 <script setup></script>
 
 <template>
-    <RouterView />
+    <AppProvider>
+        <RouterView />
+    </AppProvider>
 </template>
 
 <style lang="scss">

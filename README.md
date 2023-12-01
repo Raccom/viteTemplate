@@ -6,6 +6,7 @@ vue3 项目模板，自动化、快速、开箱即用。
 
 - 💪 Vue 3、Vue-Router 4、Vite、esbuild
 - ☀️ Pinia 状态管理、Uno原子化Css
+- 💥 Vant 组件
 - ⚙️ vue 组件、hooks 自动导入
 
 ## 运行命令
