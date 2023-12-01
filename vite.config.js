@@ -3,6 +3,9 @@ import { defineConfig } from 'vite';
 import { resolve } from 'path';
 import AutoImport from 'unplugin-auto-import/vite';
 import Components from 'unplugin-vue-components/vite';
+import UnoCSS from 'unocss/vite';
+import presetUno from '@unocss/preset-uno';
+import presetAttributify from '@unocss/preset-attributify';
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
 import IconsResolver from 'unplugin-icons/resolver';
 import Icons from 'unplugin-icons/vite';
@@ -54,7 +57,7 @@ export default defineConfig({
         // 反向代理配置
         proxy: {
             '/api': {
-                target: "http://localhost:8080",
+                target: "http://localhost:3000",
                 changeOrigin: true,
                 rewrite: (path) => path.replace(/^\/api/, '')
             }
@@ -96,6 +99,9 @@ export default defineConfig({
     },
     plugins: [
         vue(),
+        UnoCSS({
+            presets: [presetUno(), presetAttributify()]
+        }),
         AutoImport({
             imports: ['vue'],
             resolvers: [

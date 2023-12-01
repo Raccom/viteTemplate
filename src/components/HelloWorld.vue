@@ -12,7 +12,6 @@ const content = computed({
 </script>
 
 <template>
-    <h1>hello</h1>
     <el-button type="primary" @click="content=999">change Value</el-button>
 </template>
 

@@ -1,12 +1,13 @@
-# Vue 3 + Vite
+# Joseph Liang Template
 
-Raccom vue3 项目模板，自动化、快速、开箱即用。
+vue3 项目模板，自动化、快速、开箱即用。
 
 ## 项目架构
 
 - 💪 Vue 3、Vue-Router 4、Vite、esbuild
-- ☀️ Pinia 状态管理
+- ☀️ Pinia 状态管理、Uno原子化Css
 - 💥 ElementUI组件、Icon按需导入
+- ⚙️ vue 组件、hooks 自动导入
 
 ## 运行命令
 
