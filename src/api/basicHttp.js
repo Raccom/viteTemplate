@@ -32,11 +32,7 @@ const handleResponseError = (error) => {
  */
 const handleResponseSuccess = (response) => {
     const res = response.data;
-    if (res?.status === 200) {
-        return Promise.resolve(res.data);
-    } else {
-        return Promise.reject(res);
-    }
+    return Promise.resolve(res.data);
 };
 
 // 响应拦截, 处理错误码和跳转拦截

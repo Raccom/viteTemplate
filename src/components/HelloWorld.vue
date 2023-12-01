@@ -12,7 +12,7 @@ const content = computed({
 </script>
 
 <template>
-    <n-button type="primary" @click="content=999">change Value</n-button>
+    <button type="primary" @click="content=999">change Value</button>
 </template>
 
 <style scoped lang="scss"></style>

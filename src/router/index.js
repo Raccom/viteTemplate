@@ -24,11 +24,8 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
     // login code
-    $loadingBar.start()
     setTimeout(() => {
-        $loadingBar.finish()
         next();
-        $message.success('加载完成')
     }, 500)
 });
 

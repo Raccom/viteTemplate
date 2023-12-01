@@ -6,7 +6,6 @@ import Components from 'unplugin-vue-components/vite';
 import UnoCSS from 'unocss/vite';
 import presetUno from '@unocss/preset-uno';
 import presetAttributify from '@unocss/preset-attributify';
-import { NaiveUiResolver } from 'unplugin-vue-components/resolvers';
 import Icons from 'unplugin-icons/vite';
 import IconsResolver from 'unplugin-icons/resolver';
 import viteCompression from 'vite-plugin-compression';
@@ -96,22 +95,12 @@ export default defineConfig({
             presets: [presetUno(), presetAttributify()]
         }),
         AutoImport({
-            imports: [
-                'vue',
-                {
-                    'naive-ui': [
-                        'useDialog',
-                        'useMessage',
-                        'useNotification',
-                        'useLoadingBar'
-                    ]
-                }
-            ],
+            imports: ['vue'],
             resolvers: [],
             dts: pathResolve('src/auto-imports.d.ts')
         }),
         Components({
-            resolvers: [NaiveUiResolver(), IconsResolver({ componentPrefix: 'icon' })],
+            resolvers: [IconsResolver({ componentPrefix: 'icon' })],
             dts: pathResolve('src/components.d.ts')
         }),
         Icons({ compiler: 'vue3', scale: 1, defaultClass: 'icon', autoInstall: true }),
