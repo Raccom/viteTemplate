@@ -2,6 +2,11 @@
 
 vue3 项目模板，自动化、快速、开箱即用。
 
+## 其他分支
+- `element` 集成了 ElementPlus 组件库的后台管理模板
+- `naive` 集成了 NaiveUI 组件库的后台管理模板
+- `vant` 集成了 VantUI 组件库和自适应的移动端模板
+
 ## 项目架构
 
 - 💪 Vue 3、Vue-Router 4、Vite、esbuild
