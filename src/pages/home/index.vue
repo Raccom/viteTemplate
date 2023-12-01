@@ -1,7 +1,7 @@
 <template>
     <div text-gray-500 m-15>
         <!-- pinia 获取状态 -->
-        <p text-24px mb-10px>{{ username }} home</p>
+        <p text-36px mb-10px font-size-100px>{{ username }} home</p>
         <div>
             <!-- ref 数据响应和传参 -->
             <van-button @click="num++" mr-5>count is {{ num }}</van-button>
@@ -22,13 +22,13 @@
         <van-button circle>
             <template #icon>
                 <!-- 直接使用 icon -->
-                <icon-maki:aerialway color="#000" text-18px />
+                <icon-maki:aerialway color="#000" text-30px />
             </template>
         </van-button>
         <van-button circle v-for="item in icons">
             <template #icon>
                 <!-- 动态图标渲染 -->
-                <Icon :icon="item" text-18px></Icon>
+                <Icon :icon="item" text-30px></Icon>
             </template>
         </van-button>
     </div>

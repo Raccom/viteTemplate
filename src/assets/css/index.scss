@@ -2,16 +2,14 @@ body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, fo
     margin: 0;
     padding: 0;
     user-select: none;
-    font-family: 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', '微软雅黑', Arial, sans-serif;
 }
 
 html, body, #app {
-    height: 100%;
-    min-width: 1850px;
+    height: 100vh;
+    width: 100vw;
 }
 
 body, button, input, select, textarea {
-    font-size: 12px;
     outline: none;
 }
 
@@ -30,10 +28,6 @@ address, cite, dfn, em, var {
 
 code, kbd, pre, samp {
     font-family: couriernew, courier, monospace;
-}
-
-small {
-    font-size: 12px;
 }
 
 ul, ol {
@@ -71,26 +65,4 @@ button, input, select, textarea {
 table {
     border-collapse: collapse;
     border-spacing: 0;
-}
-
-::-webkit-scrollbar {
-    width: 10px;
-    height: 16px;
-    background-color: transparent;
-}
-
-/*定义滚动条轨道
-内阴影+圆角*/
-::-webkit-scrollbar-track {
-    -webkit-box-shadow: none;
-    //border-radius: 10px;
-    background-color: transparent;
-}
-
-/*定义滑块
-内阴影+圆角*/
-::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-    -webkit-box-shadow: 0 0 5px #ccc;
-    background-color: #fff;
 }
