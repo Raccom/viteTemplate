@@ -39,10 +39,10 @@
 <script setup>
 import { storeToRefs } from 'pinia';
 import { Icon } from "@iconify/vue";
-import { useStore } from '@/store';
+import { useUserStore } from '@/store/useUserStore';
 
-const store = useStore();
-const { username } = storeToRefs(store);
+const userStore = useUserStore();
+const { username } = storeToRefs(userStore);
 
 const num = ref(0);
 
@@ -52,4 +52,5 @@ const icons = [
 ]
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+</style>
