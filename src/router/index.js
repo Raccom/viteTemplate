@@ -24,9 +24,7 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
     // login code
-    setTimeout(() => {
-        next();
-    }, 500)
+    next();
 });
 
 export default router;
