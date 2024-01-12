@@ -1,7 +1,7 @@
 <template>
     <div text-gray-500 p-15 class="content">
         <!-- pinia 获取状态 -->
-        <p text-24px mb-10px>{{ username }} home</p>
+        <p text-24px mb-10px  md:text-30px>{{ username }} home</p>
         <div>
             <!-- ref 数据响应和传参 -->
             <button @click="num++" mr-5>count is {{ num }}</button>
@@ -14,7 +14,7 @@
         </div>
         <div v-for="item in icons">
             <!-- 动态图标渲染 -->
-            <Icon :icon="item" text-18px md:text-24px></Icon>
+            <Icon :icon="item" text-18px></Icon>
         </div>
     </div>
 </template>
