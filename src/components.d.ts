@@ -7,19 +7,8 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
-    AppProvider: typeof import('./components/AppProvider.vue')['default']
     HelloWorld: typeof import('./components/HelloWorld.vue')['default']
     'IconMaki:aerialway': typeof import('~icons/maki/aerialway')['default']
-    NButton: typeof import('naive-ui')['NButton']
-    NCode: typeof import('naive-ui')['NCode']
-    NDatePicker: typeof import('naive-ui')['NDatePicker']
-    NDialogProvider: typeof import('naive-ui')['NDialogProvider']
-    NDivider: typeof import('naive-ui')['NDivider']
-    NDriver: typeof import('naive-ui')['NDriver']
-    NLoadingBarProvider: typeof import('naive-ui')['NLoadingBarProvider']
-    NMessageProvider: typeof import('naive-ui')['NMessageProvider']
-    NNotificationProvider: typeof import('naive-ui')['NNotificationProvider']
-    NSpace: typeof import('naive-ui')['NSpace']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }

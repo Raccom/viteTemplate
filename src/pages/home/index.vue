@@ -1,5 +1,5 @@
 <template>
-    <div text-gray-500 p-15>
+    <div text-gray-500 p-15 class="content">
         <!-- pinia 获取状态 -->
         <p text-24px mb-10px>{{ username }} home</p>
         <div>
@@ -14,7 +14,7 @@
         </div>
         <div v-for="item in icons">
             <!-- 动态图标渲染 -->
-            <Icon :icon="item" text-18px></Icon>
+            <Icon :icon="item" text-18px md:text-24px></Icon>
         </div>
     </div>
 </template>
@@ -36,4 +36,7 @@ const icons = [
 </script>
 
 <style lang="scss" scoped>
+.content {
+    background-color: $bgColor;
+}
 </style>

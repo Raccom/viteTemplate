@@ -5,5 +5,4 @@
 </template>
 
 <style lang="scss">
-@use '@/assets/css/index';
 </style>
