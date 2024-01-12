@@ -1,7 +1,7 @@
 <template>
-    <div text-gray-500 m-15>
+    <div text-gray-500 m-15 class="content">
         <!-- pinia 获取状态 -->
-        <p text-24px mb-10px>{{ username }} home</p>
+        <p text-24px mb-10px  md:text-30px>{{ username }} home</p>
         <div>
             <!-- ref 数据响应和传参 -->
             <n-button @click="num++" mr-5>count is {{ num }}</n-button>
@@ -24,7 +24,7 @@
         <n-button circle>
             <template #icon>
                 <!-- 直接使用 icon -->
-                <icon-maki:aerialway color="#000" text-18px />
+                <icon-maki:aerialway color="#000" text-18px/>
             </template>
         </n-button>
         <n-button circle v-for="item in icons">
@@ -53,4 +53,7 @@ const icons = [
 </script>
 
 <style lang="scss" scoped>
+.content {
+    background-color: $bgColor;
+}
 </style>

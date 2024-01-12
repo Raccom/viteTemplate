@@ -10,6 +10,7 @@ import { NaiveUiResolver } from 'unplugin-vue-components/resolvers';
 import Icons from 'unplugin-icons/vite';
 import IconsResolver from 'unplugin-icons/resolver';
 import viteCompression from 'vite-plugin-compression';
+import { visualizer } from "rollup-plugin-visualizer";
 
 const pathResolve = (dir) => resolve(__dirname, ".", dir);
 
@@ -22,6 +23,15 @@ export default defineConfig({
     logLevel: "info",
     // 设为false 可以避免 vite 清屏而错过在终端中打印某些关键信息
     clearScreen: true,
+    css: {
+        preprocessorOptions: {
+            scss: {
+                modifyVars: {},
+                javascriptEnabled: true,
+                additionalData: `@import "src/assets/css/var.scss";`,
+            },
+        },
+    },
     resolve: {
         // https://vitejs.dev/config/#resolve-alias
         alias: {
@@ -36,11 +46,11 @@ export default defineConfig({
     },
     //本地运行配置，以及反向代理配置
     server: {
-        host: "localhost", // 0.0.0.0
+        host: "0.0.0.0", // 0.0.0.0
         https: false, //是否启用 https
         cors: true, //为开发服务器配置 CORS , 默认启用并允许任何源
         open: false, //服务启动时自动在浏览器中打开应用
-        port: 5173,
+        port: 5200,
         strictPort: false, //设为true时端口被占用则直接退出，不会尝试下一个可用端口
         hmr: false, //禁用或配置 HMR 连接
         // 传递给 chockidar 的文件系统监视器选项
@@ -52,7 +62,12 @@ export default defineConfig({
             '/api': {
                 target: "http://localhost:3000",
                 changeOrigin: true,
-                rewrite: (path) => path.replace(/^\/api/, '')
+                rewrite: (path) => path.replace(/^\/api/, ''),
+                configure: (proxy, options) => {
+                    proxy.on('proxyRes', (proxyRes, req) => {
+                        proxyRes.headers['x-real-url'] = new URL(req.url || '', options.target)?.href || ''
+                    })
+                },
             }
         }
     },
@@ -118,6 +133,12 @@ export default defineConfig({
         // terser()
         viteCompression({
             threshold: 1000 * 100 // 对大于 100kb 的文件进行压缩
+        }),
+        visualizer({
+            filename: 'stats.html',
+            open: true, // 打包完成后自动打开stats.html（如果浏览器支持）
+            gzipSize: true, // 是否显示gzip压缩后的大小
+            brotliSize: true, // 是否显示brotli压缩后的大小
         })
     ],
 })
