@@ -1,5 +1,5 @@
 <template>
-    <div text-gray-500 m-15>
+    <div text-gray-500 m-15 class="content">
         <!-- pinia 获取状态 -->
         <p text-36px mb-10px font-size-100px>{{ username }} home</p>
         <div>
@@ -51,4 +51,7 @@ const icons = [
 </script>
 
 <style lang="scss" scoped>
+.content {
+    background-color: $bgColor;
+}
 </style>

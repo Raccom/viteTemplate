@@ -1,33 +1,41 @@
-body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, fieldset, legend, button, input, textarea, th, td {
+@font-face {
+    font-family: "PingFang";
+    src: url("/fonts/PingFangSC-Regular.woff2");
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
     margin: 0;
     padding: 0;
-    user-select: none;
+    box-sizing: border-box;
 }
 
-html, body, #app {
-    height: 100vh;
-    width: 100vw;
-}
-
-body, button, input, select, textarea {
-    outline: none;
-}
-
-button {
-    cursor: pointer;
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, fieldset, legend, button, input, textarea, th, td {
     user-select: none;
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-size: 100%;
+    font-weight: normal;
 }
 
-address, cite, dfn, em, var {
-    font-style: normal;
+#app,
+body,
+html,
+.n-config-provider {
+  height: 100%;
 }
 
-code, kbd, pre, samp {
-    font-family: couriernew, courier, monospace;
+body {
+    font-family: -apple-system, BlinkMacSystemFont, PingFang, Helvetica Neue, Helvetica, Microsoft YaHei, sans-serif;
+    color: #282828;
+    font-size: 14px;
+    overflow: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+small {
+    font-size: 12px;
 }
 
 ul, ol {
@@ -56,10 +64,6 @@ legend {
 
 fieldset, img {
     border: 0;
-}
-
-button, input, select, textarea {
-    font-size: 100%;
 }
 
 table {
