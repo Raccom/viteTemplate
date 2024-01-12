@@ -1,5 +1,5 @@
 <template>
-    <div text-gray-500 m-15>
+    <div text-gray-500 m-15 class="content">
         <!-- pinia 获取状态 -->
         <p text-24px mb-10px>{{ username }} home</p>
         <div>
@@ -23,7 +23,7 @@
         <el-button circle>
             <template #icon>
                 <!-- 直接使用 icon -->
-                <el-icon color="#000" text-18px><Plus/></el-icon>
+                <el-icon color="#000" text-18px md:text-24px><Plus/></el-icon>
             </template>
         </el-button>
         <el-button circle v-for="item in icons">
@@ -49,4 +49,7 @@ const icons = [
 </script>
 
 <style lang="scss" scoped>
+.content {
+    background-color: $bgColor;
+}
 </style>

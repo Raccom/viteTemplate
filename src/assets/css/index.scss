@@ -1,34 +1,37 @@
-body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, fieldset, legend, button, input, textarea, th, td {
+@font-face {
+    font-family: "PingFang";
+    src: url("/fonts/PingFangSC-Regular.woff2");
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
     margin: 0;
     padding: 0;
-    user-select: none;
+    box-sizing: border-box;
 }
 
-html, body, #app {
-    height: 100vh;
-    width: 100vw;
-}
-
-body, button, input, select, textarea {
-    font-size: 12px;
-    outline: none;
-}
-
-button {
-    cursor: pointer;
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, fieldset, legend, button, input, textarea, th, td {
     user-select: none;
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-size: 100%;
+    font-weight: normal;
 }
 
-address, cite, dfn, em, var {
-    font-style: normal;
+#app,
+body,
+html,
+.n-config-provider {
+  height: 100%;
 }
 
-code, kbd, pre, samp {
-    font-family: couriernew, courier, monospace;
+body {
+    font-family: -apple-system, BlinkMacSystemFont, PingFang, Helvetica Neue, Helvetica, Microsoft YaHei, sans-serif;
+    color: #282828;
+    font-size: 14px;
+    overflow: hidden;
+    -webkit-font-smoothing: antialiased;
 }
 
 small {
@@ -63,33 +66,7 @@ fieldset, img {
     border: 0;
 }
 
-button, input, select, textarea {
-    font-size: 100%;
-}
-
 table {
     border-collapse: collapse;
     border-spacing: 0;
-}
-
-::-webkit-scrollbar {
-    width: 10px;
-    height: 16px;
-    background-color: transparent;
-}
-
-/*定义滚动条轨道
-内阴影+圆角*/
-::-webkit-scrollbar-track {
-    -webkit-box-shadow: none;
-    //border-radius: 10px;
-    background-color: transparent;
-}
-
-/*定义滑块
-内阴影+圆角*/
-::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-    -webkit-box-shadow: 0 0 5px #ccc;
-    background-color: #fff;
 }

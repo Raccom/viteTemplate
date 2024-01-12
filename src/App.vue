@@ -9,5 +9,4 @@ import zhCn from 'element-plus/dist/locale/zh-cn.mjs';
 </script>
 
 <style lang="scss">
-@use '@/assets/css/index';
 </style>
