@@ -1,7 +1,7 @@
 <template>
     <div text-gray-500 m-15 class="content">
         <!-- pinia 获取状态 -->
-        <p text-24px mb-10px>{{ username }} home</p>
+        <p text-24px mb-10px  md:text-30px>{{ username }} home</p>
         <div>
             <!-- ref 数据响应和传参 -->
             <el-button @click="num++" mr-5>count is {{ num }}</el-button>
@@ -23,7 +23,7 @@
         <el-button circle>
             <template #icon>
                 <!-- 直接使用 icon -->
-                <el-icon color="#000" text-18px md:text-24px><Plus/></el-icon>
+                <el-icon color="#000" text-18px><Plus/></el-icon>
             </template>
         </el-button>
         <el-button circle v-for="item in icons">
