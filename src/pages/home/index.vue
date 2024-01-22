@@ -10,7 +10,7 @@
     </div>
     <div m-15>
         <div>
-            <icon-maki:aerialway color="#000" text-18px />
+            <maki:aerialway color="#000" text-18px />
         </div>
         <div v-for="item in icons">
             <!-- 动态图标渲染 -->
