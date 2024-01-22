@@ -24,7 +24,7 @@
         <n-button circle>
             <template #icon>
                 <!-- 直接使用 icon -->
-                <icon-maki:aerialway color="#000" text-18px/>
+                <maki:aerialway color="#000" text-18px/>
             </template>
         </n-button>
         <n-button circle v-for="item in icons">
