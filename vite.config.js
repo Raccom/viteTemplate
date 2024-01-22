@@ -60,7 +60,7 @@ export default defineConfig({
         // 反向代理配置
         proxy: {
             '/api': {
-                target: "http://localhost:3000",
+                target: "http://localhost:5200",
                 changeOrigin: true,
                 rewrite: (path) => path.replace(/^\/api/, ''),
                 configure: (proxy, options) => {
@@ -116,7 +116,7 @@ export default defineConfig({
             dts: pathResolve('src/auto-imports.d.ts')
         }),
         Components({
-            resolvers: [VantResolver(), IconsResolver({ componentPrefix: 'icon' })],
+            resolvers: [VantResolver(), IconsResolver({ componentPrefix: '' })],
             dts: pathResolve('src/components.d.ts')
         }),
         Icons({ compiler: 'vue3', scale: 1, defaultClass: 'icon', autoInstall: true }),
