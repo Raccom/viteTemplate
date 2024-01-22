@@ -119,7 +119,7 @@ export default defineConfig({
                     prefix: 'Icon'
                 })
             ],
-            dts: pathResolve('src/auto-imports.d.ts')
+            dts: pathResolve('auto-imports.d.ts')
         }),
         Components({
             resolvers: [
@@ -130,7 +130,7 @@ export default defineConfig({
                     importStyle: 'sass',
                 })
             ],
-            dts: pathResolve('src/components.d.ts')
+            dts: pathResolve('components.d.ts')
         }),
         Icons({
             compiler: 'vue3',
