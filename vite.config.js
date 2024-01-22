@@ -112,11 +112,11 @@ export default defineConfig({
         AutoImport({
             imports: ['vue'],
             resolvers: [],
-            dts: pathResolve('src/auto-imports.d.ts')
+            dts: pathResolve('auto-imports.d.ts')
         }),
         Components({
             resolvers: [IconsResolver({ componentPrefix: '' })],
-            dts: pathResolve('src/components.d.ts')
+            dts: pathResolve('components.d.ts')
         }),
         Icons({ compiler: 'vue3', scale: 1, defaultClass: 'icon', autoInstall: true }),
         // terser()
