@@ -13,6 +13,7 @@ auto-imports.d.ts
 dist
 dist-ssr
 stats.html
+app_client
 *.local
 
 # Editor directories and files
