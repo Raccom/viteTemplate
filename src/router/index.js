@@ -24,8 +24,8 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
     // login code
+    next();
     setTimeout(() => {
-        next();
     }, 500)
 });
 
