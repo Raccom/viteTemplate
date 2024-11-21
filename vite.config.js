@@ -14,6 +14,10 @@ import { visualizer } from "rollup-plugin-visualizer";
 
 const pathResolve = (dir) => resolve(__dirname, ".", dir);
 
+const proxyEntry = {
+    '/api': "https://www.example.com",
+};
+
 export default defineConfig({
     publicDir: "public",
     base: './',
@@ -26,9 +30,10 @@ export default defineConfig({
     css: {
         preprocessorOptions: {
             scss: {
+                silenceDeprecations: ['legacy-js-api'],
                 modifyVars: {},
                 javascriptEnabled: true,
-                additionalData: `@import "src/assets/css/var.scss";`,
+                additionalData: `@use "src/assets/css/var.scss" as *;`,
             },
         },
     },
@@ -58,18 +63,19 @@ export default defineConfig({
             ignored: ["!**/node_modules/your-package-name/**"]
         },
         // 反向代理配置
-        proxy: {
-            '/api': {
-                target: "http://localhost:5200",
+        proxy: Object.entries(proxyEntry).reduce((reflect, [key, val]) => ({
+            ...reflect,
+            [key]: {
+                target: val,
                 changeOrigin: true,
-                rewrite: (path) => path.replace(/^\/api/, ''),
+                rewrite: (path) => path.replace(new RegExp(`^${key}`), ''),
                 configure: (proxy, options) => {
                     proxy.on('proxyRes', (proxyRes, req) => {
                         proxyRes.headers['x-real-url'] = new URL(req.url || '', options.target)?.href || ''
                     })
                 },
-            }
-        }
+            },
+        }), {})
     },
     //打包配置
     build: {
@@ -136,7 +142,7 @@ export default defineConfig({
         }),
         visualizer({
             filename: 'stats.html',
-            open: true, // 打包完成后自动打开stats.html（如果浏览器支持）
+            open: false, // 打包完成后自动打开stats.html（如果浏览器支持）
             gzipSize: true, // 是否显示gzip压缩后的大小
             brotliSize: true, // 是否显示brotli压缩后的大小
         })
