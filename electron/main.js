@@ -1,4 +1,4 @@
-const { app, BrowserWindow, Menu, dialog, screen } = require("electron");
+const { app, BrowserWindow, Menu, dialog, screen, globalShortcut } = require("electron");
 const { autoUpdater } = require("electron-updater");
 const path = require("path");
 
@@ -7,6 +7,9 @@ const isPackaged = app.isPackaged;
 
 // 禁止显示默认菜单
 Menu.setApplicationMenu(null);
+
+// 屏蔽安全告警
+process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true';
 
 // 主窗口
 let mainWindow;
@@ -20,6 +23,9 @@ const createWindow = () => {
         minWidth: 800,
         minHeight: 600,
         icon: path.resolve(__dirname, "../public/icon.ico"),
+        webPreferences: {
+            preload: path.join(__dirname, 'preload.js'),
+        },
     });
 
     const load = () => {
@@ -198,6 +204,9 @@ if (!gotTheLock) {
 
     // 在应用准备就绪时调用函数
     app.whenReady().then(() => {
+        globalShortcut.register('F11', function () {
+            mainWindow.webContents.openDevTools();
+        })
         createWindow();
 
         app.on("activate", () => {

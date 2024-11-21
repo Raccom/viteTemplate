@@ -24,11 +24,10 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
     // login code
-    $loadingBar.start()
+    $loadingBar.start();
+    next();
     setTimeout(() => {
-        $loadingBar.finish()
-        next();
-        $message.success('加载完成')
+        $loadingBar.finish();
     }, 500)
 });
 

@@ -16,7 +16,11 @@ const lightThemeOverrides = {
 
 const darkThemeOverrides = {
     common: {
-        primaryColor: '#ccc'
+        primaryColor: '#00baff',
+        primaryColorHover: '#00a6ff',
+        primaryColorPressed: '#0095ff',
+        primaryColorSuppl: '#006fff',
+        fontWeightStrong: '600'
     }
 };
 
