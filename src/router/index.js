@@ -26,13 +26,12 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from, next) => {
-    const loadingInstance = ElLoading.service({text: '加载中...'});
-
     // login code
+    const loadingInstance = ElLoading.service({text: '加载中...'});
+    next();
     setTimeout(() => {
         loadingInstance.close();
-        next();
-    }, 1000);
+    }, 500);
 });
 
 // 导出路由

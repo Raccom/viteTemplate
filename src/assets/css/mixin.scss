@@ -1,0 +1,29 @@
+@mixin flexCenter($direction: row) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin transCenter() {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@mixin transitionHack($transition: .3s) {
+    -webkit-transition: $transition;
+    -moz-transition: $transition;
+    -ms-transition: $transition;
+    -o-transition: $transition;
+    transition: $transition;
+}
+
+@mixin boxShadow() {
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.12);
+}
+
+@mixin textShadow() {
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.22);
+}
