@@ -1,6 +1,6 @@
 <template>
     <div class="home-container">
-        <HelloWorld v-model="num"></HelloWorld>
+        <HelloWorld v-model="num" />
     </div>
 </template>
 
