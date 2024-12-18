@@ -6,7 +6,7 @@ export const useUserStore = defineStore('store', () => {
     const socketState = ref(false);
     const setSocketState = value => socketState.value = value;
     const socketHandler = ref(null);
-    const serSocketHandler = value => socketHandler.value = value;
+    const setSocketHandler = value => socketHandler.value = value;
 
     return {
         username,
@@ -14,6 +14,6 @@ export const useUserStore = defineStore('store', () => {
         socketState,
         setSocketState,
         socketHandler,
-        serSocketHandler,
+        setSocketHandler,
     };
 })
